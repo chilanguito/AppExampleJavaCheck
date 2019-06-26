@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AppList</string>
+    <string name="fg">fg</string>
+    <string name="title_activity_create_new_item">CreateNewItem</string>
+    <string name="agregar_nuevo_item">Agregar nuevo item</string>
+
+    <string name="ingrese_nombre_del_animal">ingrese nombre del animal</string>
+    <string name="aceptar">Aceptar</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array">
+        <item>Rabbit</item>
+        <item>Cat</item>
+        <item>Dog</item>
+        <item>Bird</item>
+        <item>Spider</item>
+        <item>Tarantula</item>
+        <item>Snake</item>
+        <item>Bee</item>
+        <item>Pig</item>
+        <item>Elephant</item>
+        <item>Ant</item>
+    </string-array>
+</resources>
