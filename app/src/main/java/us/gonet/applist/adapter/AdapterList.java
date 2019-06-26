@@ -40,9 +40,7 @@ public class AdapterList extends Adapter<AdapterList.ViewHolder> {
      viewHolder.bind(listener);
 
        if (lista.get(i).isChecked()){
-           Collections.sort(lista);
            viewHolder.mCheckBox.setChecked(true);
-
        }else {
            viewHolder.mCheckBox.setChecked(false);
 

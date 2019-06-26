@@ -53,9 +53,10 @@ public class MainActivity extends AppCompatActivity {
                  //   lista.get(lista.size()-1).setChecked(true);
                     adapterList.notifyItemMoved(position,lista.size()-1);
                 }
+                Collections.sort(lista);
                 lista.get(position).setChecked(false);
                 adapterList.notifyDataSetChanged();
-
+                Collections.sort(lista);
             }
         });
 

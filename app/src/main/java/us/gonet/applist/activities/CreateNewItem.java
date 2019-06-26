@@ -15,7 +15,6 @@ import us.gonet.applist.R;
 
 public class CreateNewItem extends AppCompatActivity {
 
-    private Button mButton;
     private TextView mTextView;
 
     @Override
@@ -34,10 +33,10 @@ public class CreateNewItem extends AppCompatActivity {
             }
         });
 
-        mButton= findViewById(R.id.button_new);
+        Button button = findViewById(R.id.button_new);
         mTextView= findViewById(R.id.nuevo_item);
 
-        mButton.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String newAnimal= mTextView.getText().toString();

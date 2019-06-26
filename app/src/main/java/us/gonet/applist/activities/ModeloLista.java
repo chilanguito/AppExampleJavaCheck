@@ -1,7 +1,5 @@
 package us.gonet.applist.activities;
 
-import java.util.Comparator;
-
 public class ModeloLista implements Comparable<ModeloLista> {
 
     private String nombre;
@@ -31,6 +29,15 @@ public class ModeloLista implements Comparable<ModeloLista> {
 
     @Override
     public int compareTo(ModeloLista o) {
+        String nom="";
+        if (o.checked) {
+             nom = o.nombre;
+        }
+
+        if (checked) {
+            return this.nombre.compareTo(nom);
+        }
+
         return nombre.compareTo(o.nombre);
     }
 }
