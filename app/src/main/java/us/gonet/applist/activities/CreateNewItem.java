@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import us.gonet.applist.R;
 
@@ -40,12 +41,22 @@ public class CreateNewItem extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String newAnimal = mTextView.getText().toString();
-                newAnimal = newAnimal.toLowerCase();
-                newAnimal = newAnimal.substring(0, 1).toUpperCase() + newAnimal.substring(1);
-                Intent intent = new Intent();
-                intent.putExtra("NEW", newAnimal);
-                setResult(Activity.RESULT_OK, intent);
-                finish();
+
+
+                if (newAnimal.isEmpty()) {
+                    Snackbar.make(v, "Debe tener nombre", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+
+
+                } else {
+
+                    newAnimal = newAnimal.toLowerCase();
+                    newAnimal = newAnimal.substring(0, 1).toUpperCase() + newAnimal.substring(1);
+                    Intent intent = new Intent();
+                    intent.putExtra("NEW", newAnimal);
+                    setResult(Activity.RESULT_OK, intent);
+                    finish();
+                }
             }
         });
 
