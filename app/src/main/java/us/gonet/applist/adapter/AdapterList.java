@@ -38,19 +38,8 @@ public class AdapterList extends Adapter<AdapterList.ViewHolder> {
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, @SuppressLint("RecyclerView") final int i) {
         viewHolder.mTextView.setText(lista.get(i).getNombre());
         viewHolder.bind(listener);
-
-
         viewHolder.mCheckBox.setChecked(lista.get(i).isChecked());
         Collections.sort(lista);
-        /*
-
-        if (lista.get(i).isChecked()) {
-            viewHolder.mCheckBox.setChecked(true);
-            Collections.sort(lista);
-        } else {
-            viewHolder.mCheckBox.setChecked(false);
-            Collections.sort(lista);
-        }*/
     }
 
 
@@ -87,7 +76,6 @@ public class AdapterList extends Adapter<AdapterList.ViewHolder> {
                         mCheckBox.setChecked(false);
                         lista.get(getAdapterPosition()).setChecked(true);
                         listener.click(getAdapterPosition());
-
                     }
                 }
             });

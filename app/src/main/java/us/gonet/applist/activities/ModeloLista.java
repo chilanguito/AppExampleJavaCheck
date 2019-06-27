@@ -14,20 +14,16 @@ public class ModeloLista implements Comparable<ModeloLista> {
         this.posicion = posicion;
     }
 
-    public int getPosicion() {
+    int getPosicion() {
         return posicion;
     }
 
-    public void setPosicion(int posicion) {
+    void setPosicion(int posicion) {
         this.posicion = posicion;
     }
 
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public boolean isChecked() {
@@ -40,14 +36,14 @@ public class ModeloLista implements Comparable<ModeloLista> {
 
     @Override
     public int compareTo(ModeloLista o) {
-        String nom="";
+        String nom = "";
         if (o.checked) {
-             nom = o.nombre;
+            nom = o.nombre;
         }
 
         if (checked) {
             return this.nombre.compareTo(nom);
-        } else{
+        } else {
             return nombre.compareTo(o.nombre);
         }
     }
