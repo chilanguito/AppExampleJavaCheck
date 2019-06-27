@@ -16,10 +16,11 @@ import java.util.LinkedList;
 
 import us.gonet.applist.R;
 import us.gonet.applist.adapter.AdapterList;
+import us.gonet.applist.model.ModelList;
 
 public class MainActivity extends AppCompatActivity {
 
-    LinkedList<ModeloLista> lista = new LinkedList<>();
+    LinkedList<ModelList> list = new LinkedList<>();
     AdapterList adapterList;
 
     @Override
@@ -31,54 +32,53 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        String[] arreglo = getResources().getStringArray(R.array.array);
+        String[] arrayString = getResources().getStringArray(R.array.array);
 
-        Arrays.sort(arreglo);
+        Arrays.sort(arrayString);
 
 
-        for (String valor : arreglo) {
-            ModeloLista model = new ModeloLista(valor, false, 0);
-            lista.addLast(model);
+        for (String valor : arrayString) {
+            ModelList model = new ModelList(valor, false, 0);
+            list.addLast(model);
         }
 
 
-        adapterList = new AdapterList(lista, new AdapterList.CheckList() {
+        adapterList = new AdapterList(list, new AdapterList.CheckList() {
             @Override
             public void click(int position) {
-                actualizaPosiciones();
-                if (!lista.get(position).isChecked()) {
-                    String value = lista.get(position).getNombre();
-                    lista.remove(position);
-                    ModeloLista model = new ModeloLista(value, true, position);
-                    lista.addLast(model);
-                    adapterList.notifyItemMoved(position, lista.size() - 1);
+                updatePositions();
+                if (!list.get(position).isChecked()) {
+                    String value = list.get(position).getName();
+                    list.remove(position);
+                    ModelList model = new ModelList(value, true, position);
+                    list.addLast(model);
+                    adapterList.notifyItemMoved(position, list.size() - 1);
                 } else {
-                    String value = lista.get(position).getNombre();
-                    int valor = lista.get(position).getPosicion();
+                    String value = list.get(position).getName();
+                    int valor = list.get(position).getPosition();
 
-                    if (valor + 1 == lista.size()) {
+                    if (valor + 1 == list.size()) {
                         valor = 0;
                     }
 
-                    lista.remove(position);
-                    ModeloLista model = new ModeloLista(value, false, valor);
+                    list.remove(position);
+                    ModelList model = new ModelList(value, false, valor);
 
                     if (valor == 0) {
-                        lista.addFirst(model);
-                  } else {
-                        lista.add(model);
+                        list.addFirst(model);
+                    } else {
+                        list.add(model);
                     }
 
                     adapterList.notifyItemMoved(position, valor);
                 }
-                Collections.sort(lista);
+                Collections.sort(list);
                 adapterList.notifyDataSetChanged();
-
             }
 
-            void actualizaPosiciones() {
-                for (int i = 0; i < lista.size(); i++) {
-                    lista.get(i).setPosicion(i);
+            void updatePositions() {
+                for (int i = 0; i < list.size(); i++) {
+                    list.get(i).setPosition(i);
                 }
             }
         }
@@ -102,10 +102,10 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 0) {
             if (resultCode == Activity.RESULT_OK) {
                 assert data != null;
-                String nuevo = data.getStringExtra("NEW");
-                ModeloLista model = new ModeloLista(nuevo, false, 0);
-                lista.add(model);
-                Collections.sort(lista);
+                String newName = data.getStringExtra("NEW");
+                ModelList model = new ModelList(newName, false, 0);
+                list.addFirst(model);
+                Collections.sort(list);
                 adapterList.notifyDataSetChanged();
             }
         }

@@ -40,6 +40,9 @@ public class CreateNewItem extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String newAnimal= mTextView.getText().toString();
+                //str.substring(0, 1).toUpperCase() + str.substring(1);
+
+                newAnimal= newAnimal.substring(0,1).toUpperCase()+newAnimal.substring(1);
                 Intent intent=new Intent();
                 intent.putExtra("NEW",newAnimal);
                 setResult(Activity.RESULT_OK,intent);

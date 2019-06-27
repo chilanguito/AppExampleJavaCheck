@@ -15,15 +15,15 @@ import java.util.Collections;
 import java.util.LinkedList;
 
 import us.gonet.applist.R;
-import us.gonet.applist.activities.ModeloLista;
+import us.gonet.applist.model.ModelList;
 
 public class AdapterList extends Adapter<AdapterList.ViewHolder> {
 
-    private LinkedList<ModeloLista> lista;
+    private LinkedList<ModelList> list;
     private CheckList listener;
 
-    public AdapterList(LinkedList<ModeloLista> lista, CheckList listener) {
-        this.lista = lista;
+    public AdapterList(LinkedList<ModelList> list, CheckList listener) {
+        this.list = list;
         this.listener = listener;
     }
 
@@ -36,16 +36,16 @@ public class AdapterList extends Adapter<AdapterList.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, @SuppressLint("RecyclerView") final int i) {
-        viewHolder.mTextView.setText(lista.get(i).getNombre());
+        viewHolder.mTextView.setText(list.get(i).getName());
         viewHolder.bind(listener);
-        viewHolder.mCheckBox.setChecked(lista.get(i).isChecked());
-        Collections.sort(lista);
+        viewHolder.mCheckBox.setChecked(list.get(i).isChecked());
+        Collections.sort(list);
     }
 
 
     @Override
     public int getItemCount() {
-        return lista.size();
+        return list.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -67,14 +67,14 @@ public class AdapterList extends Adapter<AdapterList.ViewHolder> {
             mCheckBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    boolean valor = lista.get(getAdapterPosition()).isChecked();
+                    boolean valor = list.get(getAdapterPosition()).isChecked();
                     if (!valor) {
-                        lista.get(getAdapterPosition()).setChecked(false);
+                        list.get(getAdapterPosition()).setChecked(false);
                         listener.click(getAdapterPosition());
                         AdapterList.this.notifyDataSetChanged();
                     } else {
                         mCheckBox.setChecked(false);
-                        lista.get(getAdapterPosition()).setChecked(true);
+                        list.get(getAdapterPosition()).setChecked(true);
                         listener.click(getAdapterPosition());
                     }
                 }
@@ -84,7 +84,7 @@ public class AdapterList extends Adapter<AdapterList.ViewHolder> {
         @Override
         public void onClick(View v) {
             if (v == mImageView) {
-                lista.remove(getAdapterPosition());
+                list.remove(getAdapterPosition());
                 AdapterList.this.notifyDataSetChanged();
             }
         }
