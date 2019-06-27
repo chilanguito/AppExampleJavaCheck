@@ -49,9 +49,9 @@ public class AdapterList extends Adapter<AdapterList.ViewHolder> {
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView mTextView;
-        ImageView mImageView;
-        CheckBox mCheckBox;
+        private TextView mTextView;
+        private ImageView mImageView;
+        private CheckBox mCheckBox;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,7 +63,6 @@ public class AdapterList extends Adapter<AdapterList.ViewHolder> {
         }
 
         void bind(final CheckList listener) {
-
             mCheckBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

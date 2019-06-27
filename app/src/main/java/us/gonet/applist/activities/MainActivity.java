@@ -20,8 +20,8 @@ import us.gonet.applist.model.ModelList;
 
 public class MainActivity extends AppCompatActivity {
 
-    LinkedList<ModelList> list = new LinkedList<>();
-    AdapterList adapterList;
+    private LinkedList<ModelList> list = new LinkedList<>();
+    private AdapterList adapterList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
