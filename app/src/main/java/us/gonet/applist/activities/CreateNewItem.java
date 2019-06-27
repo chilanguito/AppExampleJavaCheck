@@ -34,18 +34,17 @@ public class CreateNewItem extends AppCompatActivity {
         });
 
         Button button = findViewById(R.id.button_new);
-        mTextView= findViewById(R.id.nuevo_item);
+        mTextView = findViewById(R.id.nuevo_item);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String newAnimal= mTextView.getText().toString();
-                //str.substring(0, 1).toUpperCase() + str.substring(1);
-
-                newAnimal= newAnimal.substring(0,1).toUpperCase()+newAnimal.substring(1);
-                Intent intent=new Intent();
-                intent.putExtra("NEW",newAnimal);
-                setResult(Activity.RESULT_OK,intent);
+                String newAnimal = mTextView.getText().toString();
+                newAnimal = newAnimal.toLowerCase();
+                newAnimal = newAnimal.substring(0, 1).toUpperCase() + newAnimal.substring(1);
+                Intent intent = new Intent();
+                intent.putExtra("NEW", newAnimal);
+                setResult(Activity.RESULT_OK, intent);
                 finish();
             }
         });
