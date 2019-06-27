@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         for (String valor : arreglo) {
-            ModeloLista model = new ModeloLista(valor, false);
+            ModeloLista model = new ModeloLista(valor, false,0);
             lista.addLast(model);
         }
 
@@ -45,18 +45,22 @@ public class MainActivity extends AppCompatActivity {
         adapterList = new AdapterList(lista, new AdapterList.CheckList() {
             @Override
             public void click(int position) {
-                if (!lista.get(position).isChecked()){
+                if (!lista.get(position).isChecked()) {
                     String value = lista.get(position).getNombre();
                     lista.remove(position);
-                    ModeloLista model = new ModeloLista(value, true);
+                    ModeloLista model = new ModeloLista(value, true,position);
                     lista.addLast(model);
-                 //   lista.get(lista.size()-1).setChecked(true);
-                    adapterList.notifyItemMoved(position,lista.size()-1);
+                    adapterList.notifyItemMoved(position, lista.size() - 1);
+                } else {
+                    String value = lista.get(position).getNombre();
+                    int valor= lista.get(position).getPosicion();
+                    lista.remove(position);
+                    ModeloLista model = new ModeloLista(value, false,valor);
+                    lista.add(model);
+                    adapterList.notifyItemMoved(position,valor);
                 }
                 Collections.sort(lista);
-                lista.get(position).setChecked(false);
                 adapterList.notifyDataSetChanged();
-                Collections.sort(lista);
             }
         });
 
@@ -79,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == Activity.RESULT_OK) {
                 assert data != null;
                 String nuevo = data.getStringExtra("NEW");
-                ModeloLista model = new ModeloLista(nuevo, false);
+                ModeloLista model = new ModeloLista(nuevo, false,0);
                 lista.add(model);
                 Collections.sort(lista);
                 adapterList.notifyDataSetChanged();

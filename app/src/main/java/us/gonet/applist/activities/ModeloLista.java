@@ -6,9 +6,20 @@ public class ModeloLista implements Comparable<ModeloLista> {
 
     private boolean checked;
 
-    public ModeloLista(String nombre, boolean checked) {
+    private int posicion;
+
+    ModeloLista(String nombre, boolean checked, int posicion) {
         this.nombre = nombre;
         this.checked = checked;
+        this.posicion = posicion;
+    }
+
+    public int getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(int posicion) {
+        this.posicion = posicion;
     }
 
     public String getNombre() {
@@ -36,8 +47,31 @@ public class ModeloLista implements Comparable<ModeloLista> {
 
         if (checked) {
             return this.nombre.compareTo(nom);
+        } else{
+            return nombre.compareTo(o.nombre);
         }
-
-        return nombre.compareTo(o.nombre);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
